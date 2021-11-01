@@ -1,0 +1,96 @@
+:root {
+  --cell-color: #1c1c1c;
+  --dead-cell-color: #f1f1f1;
+  --dead-cell-hover-color: #e2e2e2;
+  --cell-size: 40px;
+}
+
+:focus-visible {
+  outline: 2px dotted var(--cell-color);
+  outline-offset: 3px;
+}
+
+body,
+html {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+td {
+  padding: 5px;
+}
+
+.container {
+  overflow: hidden;
+  border-radius: 5rem;
+  border: 1px solid #6c6c6c;
+}
+
+.cell {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  background-color: var(--dead-cell-color);
+  transition-property: background-color, transform;
+  transition: background-color 0.2s;
+  border-radius: 50%;
+}
+
+.cell:not(.cell--alive):hover {
+  background-color: var(--dead-cell-hover-color);
+}
+
+.cell--alive {
+  background-color: var(--cell-color);
+  animation: pop 300ms ease-out;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+}
+
+button {
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition-duration: 0.2s;
+  transition-property: border-color, background-color;
+  text-decoration: none;
+  color: #000000;
+  border: 0;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  gap: 10px;
+  min-width: 120px;
+}
+
+button:hover {
+  border: 1px solid #6c6c6c;
+  background-color: #ffffff;
+}
